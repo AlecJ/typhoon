@@ -25,9 +25,9 @@ end
 -- end
 
 -- shifts a point over by a given x and y
-function Box.move(rect, newx, newy)
-	rect.x = rect.x + newx
-	rect.y = rect.y + newy
+function Box.move(self, dx, dy)
+	self.x = self.x + dx
+	self.y = self.y + dy
 end
 
 return Box

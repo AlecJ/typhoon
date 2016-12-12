@@ -5,13 +5,16 @@
 Box = require("util.Box")
 Color = require("util.Color")
 Point = require("util.Point")
-Hex = require("Hex")
 List = require("util.List")
+Hex = require("Hex")
+Player = require("Player")
+Bullet = require("Bullet")
+Collision = require("util.Collision")
 
+local input = require("input")
 local game = require("game")
 local render = require("render")
 local world = require("world")
-local input = require("input")
 
 -- window size
 love.window.setMode(1080, 720)
@@ -20,11 +23,17 @@ love.window.setMode(1080, 720)
 grid_size = 25
 game_area = .1
 dev = false
-speed = 1.83
+bpm = 130
+bps = 60/bpm
+bpq = bps/4
 start = false
+
+hex_height = math.ceil(love.graphics.getHeight() / (math.sqrt(3) * grid_size))
+hex_width = math.ceil((love.graphics.getWidth() / grid_size + 1) / 3) * 2
 
 function love.load()
 	game.load(world)
+
 end
 
 function love.update(dt)

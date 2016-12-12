@@ -3,8 +3,11 @@
 local input = {}
 
 function input.handleInput(dt, world)
-	-- player is trying to move left
-	if love.keyboard.isDown('f') then
+	-- pass player movement to the player class
+	Player.move(world.player1, dt, world)
+
+	-- begin beat sync once f is pressed
+	if love.keyboard.isDown("f") then
 		start = true
 	end
 end

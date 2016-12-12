@@ -22,11 +22,22 @@ function render.draw(world)
 		love.graphics.rectangle('line', love.graphics.getWidth() * game_area, love.graphics.getHeight() * game_area,
 			love.graphics.getWidth() * (1 - 2 * game_area), love.graphics.getHeight() * (1 - 2 * game_area))
 	end
+
+	-- draw bullets
+	for i, bullet in ipairs(world.bullets) do
+		Bullet.render(bullet)
+	end
+
+	-- lastly, render the players
+	Player.render(world.player1)
+	Player.render(world.player2)
 end
 
 function render.grid(world)
-	for i, hexagon in ipairs(world.hexagons) do
-		Hex.render(hexagon)
+	for i, row in ipairs(world.hexagons) do
+		for j, hexagon in ipairs(row) do
+			Hex.render(hexagon)
+		end
 	end
 end
 
